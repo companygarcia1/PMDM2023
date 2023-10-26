@@ -1,4 +1,4 @@
-package com.example.prueba
+package com.example.prueba.data
 
 open class Vehicle(license: String) {
     private var license: String

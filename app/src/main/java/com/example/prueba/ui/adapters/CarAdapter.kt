@@ -1,10 +1,11 @@
-package com.example.prueba
+package com.example.prueba.ui.adapters
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
+import com.example.prueba.data.Car
 import com.example.prueba.databinding.CarAdapterItemBinding
 
 class CarAdapter() : BaseAdapter() {
@@ -38,5 +39,9 @@ class CarAdapter() : BaseAdapter() {
          binding.txtLicense.text = item.license
          binding.txtModel.text = item.model
          return binding.root
+    }
+
+    fun setData(cars: java.util.ArrayList<Car>) {
+        this.list = cars
     }
 }
