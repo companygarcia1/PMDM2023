@@ -8,7 +8,6 @@ object CarDataSource {
         cars.add(Car("2967TRW", "BMW", "320CD"))
     }
     fun getCars(): ArrayList<Car> {
-
         return cars
     }
     fun saveCar(car :Car){
