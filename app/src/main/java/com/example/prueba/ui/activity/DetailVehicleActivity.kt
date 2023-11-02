@@ -6,7 +6,7 @@ import com.example.prueba.data.cars.Car
 import com.example.prueba.data.DataSource
 import com.example.prueba.databinding.ActivityDetailVehicleBinding
 
-class DetailVehicle : AppCompatActivity() {
+class DetailVehicleActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailVehicleBinding
     private lateinit var car: Car
 

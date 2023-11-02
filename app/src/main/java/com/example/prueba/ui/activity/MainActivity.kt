@@ -43,9 +43,9 @@ class MainActivity : AppCompatActivity() {
                     Toast.LENGTH_LONG
                 ).show()
 
-                val intent = Intent(this, DetailVehicle::class.java)
-                intent.putExtra(DetailVehicle.EXTRA_DATA, "Hola mundo")
-                intent.putExtra(DetailVehicle.EXTRA_POSITION, position)
+                val intent = Intent(this, DetailVehicleActivity::class.java)
+                intent.putExtra(DetailVehicleActivity.EXTRA_DATA, "Hola mundo")
+                intent.putExtra(DetailVehicleActivity.EXTRA_POSITION, position)
                 startActivity(intent)
             }
         binding.button2.setOnClickListener {
