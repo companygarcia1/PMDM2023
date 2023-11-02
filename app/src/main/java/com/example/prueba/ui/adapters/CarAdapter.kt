@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
-import com.example.prueba.data.Car
+import com.example.prueba.data.cars.Car
 import com.example.prueba.databinding.CarAdapterItemBinding
 
 class CarAdapter() : BaseAdapter() {

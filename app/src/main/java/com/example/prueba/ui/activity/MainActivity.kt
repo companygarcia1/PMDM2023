@@ -6,9 +6,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.AdapterView
 import android.widget.Toast
-import com.example.prueba.data.Car
+import com.example.prueba.data.cars.Car
+import com.example.prueba.data.DataSource
 import com.example.prueba.ui.adapters.CarAdapter
-import com.example.prueba.data.CarDataSource
 import com.example.prueba.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -28,8 +28,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setData() {
-        adapter = CarAdapter(this, CarDataSource.getCars())
+        adapter = CarAdapter(this, DataSource.dataSourceCars.getCars(this))
         binding.carList.adapter = adapter
+        binding.carList.emptyView = binding.txtEmptyview
     }
 
     private fun setListener() {
@@ -57,7 +58,7 @@ class MainActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == 1234) {
             if (resultCode == Activity.RESULT_OK) {
-                adapter.setData(CarDataSource.getCars())
+                adapter.setData(DataSource.dataSourceCars.getCars(this))
                 adapter.notifyDataSetChanged()
             }
             if (resultCode == Activity.RESULT_CANCELED) {

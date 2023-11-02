@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Prueba</string>
+    <string name="btn_add_car">Añadir coche</string>
+    <string name="empty_cars">No hay coches</string>
 </resources>

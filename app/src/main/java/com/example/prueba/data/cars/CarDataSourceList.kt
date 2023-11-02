@@ -1,19 +1,22 @@
-package com.example.prueba.data
+package com.example.prueba.data.cars
 
-object CarDataSource {
+import android.content.Context
+
+object CarDataSourceList : ICarDataSource {
     private val cars = ArrayList<Car>()
     init{
         cars.add(Car("3456DFC", "BMW", "320CD"))
         cars.add(Car("2314FCT", "BMW", "320CD"))
         cars.add(Car("2967TRW", "BMW", "320CD"))
     }
-    fun getCars(): ArrayList<Car> {
+    override fun getCars(context: Context): ArrayList<Car> {
         return cars
     }
-    fun saveCar(car :Car){
+    override fun saveCar(context: Context,car : Car){
         cars.add(car)
     }
-    fun deleteCar(car :Car){
+    override fun deleteCar(context: Context,car : Car){
         cars.remove(car)
     }
+
 }
