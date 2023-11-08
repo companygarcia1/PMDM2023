@@ -6,8 +6,10 @@ import android.app.TimePickerDialog
 import android.content.Context
 import android.content.DialogInterface
 import android.content.res.Resources
+import android.view.LayoutInflater
 import android.widget.Toast
 import com.example.prueba.R
+import com.example.prueba.databinding.DialogCustomLayoutBinding
 import java.util.Calendar
 
 object DialogManager {
@@ -76,25 +78,40 @@ object DialogManager {
         builder.show()
     }
 
-    fun showTimeDialog(context: Context){
+    fun showTimeDialog(context: Context) {
         val cal = Calendar.getInstance()
         val dialogTime = TimePickerDialog(
             context,
             null,
             cal.get(Calendar.HOUR_OF_DAY),
             cal.get(Calendar.MINUTE),
-            true)
+            true
+        )
         dialogTime.show()
     }
 
-    fun showDayDialog(context: Context, listener:DatePickerDialog.OnDateSetListener){
+    fun showDayDialog(context: Context, listener: DatePickerDialog.OnDateSetListener) {
         val cal = Calendar.getInstance()
         var dialogTime = DatePickerDialog(
             context,
             listener,
             cal.get(Calendar.YEAR),
             cal.get(Calendar.MONTH),
-            cal.get(Calendar.DAY_OF_MONTH))
+            cal.get(Calendar.DAY_OF_MONTH)
+        )
         dialogTime.show()
+    }
+
+    fun showDialogCustom(context: Context, inflater: LayoutInflater) {
+        val builder = AlertDialog.Builder(context)
+        val binding = DialogCustomLayoutBinding.inflate(inflater)
+        builder.setView(binding.root)
+
+        builder.setPositiveButton(android.R.string.ok){ dialog, _ ->
+            val name = binding.username.text
+            val pass = binding.password.text
+            Toast.makeText(context, "Click positivo", Toast.LENGTH_LONG).show()
+        }
+        builder.show()
     }
 }

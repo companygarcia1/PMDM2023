@@ -2,6 +2,9 @@
     <string name="app_name">Prueba</string>
     <string name="btn_add_car">Añadir coche</string>
     <string name="empty_cars">No hay coches</string>
+    <string name="search_cars">Buscando coches</string>
+    <string name="userName">nombre de usuario</string>
+    <string name="password">password</string>
     <string-array name="items_names">
         <item>Casa</item>
         <item>Casa 1</item>

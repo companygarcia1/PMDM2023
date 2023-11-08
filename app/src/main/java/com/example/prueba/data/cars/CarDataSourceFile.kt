@@ -9,9 +9,15 @@ import java.io.FileWriter
 
 object CarDataSourceFile : ICarDataSource {
     val fileName="cars.json"
+
+    override suspend fun getCarsAsync(context: Context): ArrayList<Car>{
+        return readFromFile(context)
+    }
+
     override fun getCars(context: Context): ArrayList<Car> {
         return readFromFile(context)
     }
+
     override fun saveCar(context: Context,car : Car){
         val cars = readFromFile(context)
         cars.add(car)

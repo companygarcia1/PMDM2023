@@ -19,4 +19,8 @@ object CarDataSourceList : ICarDataSource {
         cars.remove(car)
     }
 
+    override suspend fun getCarsAsync(context: Context): ArrayList<Car>{
+        return cars
+    }
+
 }

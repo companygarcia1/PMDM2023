@@ -6,20 +6,28 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.AdapterView
 import android.widget.Toast
+import com.example.prueba.R
 import com.example.prueba.data.cars.Car
 import com.example.prueba.data.DataSource
-import com.example.prueba.ui.adapters.CarAdapter
+import com.example.prueba.data.cars.ICarDataSource
+import com.example.prueba.ui.adapters.CarAdapterAsync
 import com.example.prueba.databinding.ActivityMainBinding
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private lateinit var adapter: CarAdapter
+    private lateinit var adapter: CarAdapterAsync
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setListener()
+        configView()
     }
 
     override fun onStart() {
@@ -27,10 +35,31 @@ class MainActivity : AppCompatActivity() {
         setData()
     }
 
-    private fun setData() {
-        adapter = CarAdapter(this, DataSource.dataSourceCars.getCars(this))
+    private fun configView() {
+        adapter = CarAdapterAsync(this)
         binding.carList.adapter = adapter
         binding.carList.emptyView = binding.txtEmptyview
+        binding.txtEmptyview.setText(R.string.search_cars)
+    }
+
+    /* private fun setData() = GlobalScope.launch(Dispatchers.Main) {
+         var cars: ArrayList<Car> = ArrayList<Car>()
+         withContext(Dispatchers.IO) {
+             delay(1000)
+             cars = DataSource.dataSourceCars.getCarsAsync(this@MainActivity)
+         }
+         adapter.setData(cars)
+         if (cars.size == 0) {
+             binding.txtEmptyview.setText(R.string.empty_cars)
+         }
+     }*/
+
+    private fun setData() {
+        val cars = DataSource.dataSourceCars.getCars(this)
+        adapter.setData(cars)
+        if (cars.size == 0) {
+            binding.txtEmptyview.setText(R.string.empty_cars)
+        }
     }
 
     private fun setListener() {
@@ -58,8 +87,7 @@ class MainActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == 1234) {
             if (resultCode == Activity.RESULT_OK) {
-                adapter.setData(DataSource.dataSourceCars.getCars(this))
-                adapter.notifyDataSetChanged()
+                setData()
             }
             if (resultCode == Activity.RESULT_CANCELED) {
 

@@ -24,9 +24,7 @@ class DialogActivity : AppCompatActivity() {
         }
 
         binding.btnDialogItem.setOnClickListener {
-            DialogManager.showDayDialog(this, DatePickerDialog.OnDateSetListener { _, i, i2, i3 ->
-                Toast.makeText(this, "Entra", Toast.LENGTH_LONG).show()
-            })
+            DialogManager.showDialogCustom(this, layoutInflater)
 
         }
     }
