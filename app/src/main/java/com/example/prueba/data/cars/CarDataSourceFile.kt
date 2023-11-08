@@ -32,7 +32,6 @@ object CarDataSourceFile : ICarDataSource {
     fun getFile(context: Context):File{
         val carsFile = File(context.filesDir,fileName)
         if (!carsFile.exists()) {
-            // Intenta crear el archivo
             try {
                 carsFile.createNewFile()
                 println("El archivo se ha creado correctamente.")
