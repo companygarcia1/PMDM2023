@@ -1,0 +1,55 @@
+package com.example.prueba.ui.fragments
+
+import android.os.Bundle
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import com.example.prueba.R
+import com.example.prueba.databinding.FragmentABinding
+
+// TODO: Rename parameter arguments, choose names that match
+// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+private const val ARG_PARAM1 = "param1"
+private const val ARG_PARAM2 = "param2"
+
+/**
+ * A simple [Fragment] subclass.
+ * Use the [FragmentA.newInstance] factory method to
+ * create an instance of this fragment.
+ */
+class FragmentA : Fragment() {
+    lateinit var binding: FragmentABinding
+    private var argumentoA: String?=null
+
+    companion object{
+        val ARG_A="ARGUMENTOA"
+
+        fun NewFragmentA(text: String):FragmentA{
+            val fragmentA = FragmentA()
+            val arguments = Bundle()
+            arguments.putString(ARG_A,text)
+            fragmentA.arguments = arguments
+            return fragmentA
+        }
+    }
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        // Inflate the layout for this fragment
+        binding = FragmentABinding.inflate(inflater)
+        return binding.root
+    }
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        if (arguments != null) {
+            argumentoA = arguments?.getString(ARG_A)
+        }
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        binding.txtArguments.text = argumentoA
+    }
+
+}

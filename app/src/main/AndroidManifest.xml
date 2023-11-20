@@ -25,21 +25,32 @@
         android:theme="@style/Theme.Prueba"
         tools:targetApi="31">
         <activity
-            android:name=".ui.activity.FlowActivity"
+            android:name=".ui.activity.MainActivity2"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.FragmentAdapterActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ui.activity.BasicActivity"
+            android:exported="true"></activity>
+        <activity
+            android:name=".ui.activity.FragmentActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.activity.FlowActivity"
+            android:exported="true" />
         <activity
             android:name=".ui.activity.ThreadActivity"
             android:exported="true" />
         <activity
             android:name=".ui.activity.MainActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".ui.activity.DialogActivity"
             android:exported="true" />
@@ -54,7 +65,7 @@
             android:exported="false" />
         <activity
             android:name=".ui.activity.NotificationActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
     </application>
 
 </manifest>
